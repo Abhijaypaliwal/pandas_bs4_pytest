@@ -17,7 +17,12 @@ cursor = connection.cursor()
 connection.commit()
 
 # Example: Fetch data
-cursor.execute("SELECT * FROM customers")
+# cursor.execute("SELECT * FROM customers")
+# rows = cursor.fetchall()
+# for row in rows:
+#     print(row)
+
+cursor.execute("Show tables")
 rows = cursor.fetchall()
 for row in rows:
     print(row)
@@ -25,3 +30,10 @@ for row in rows:
 # Close the connection
 cursor.close()
 connection.close()
+
+#mysql log table would be there, name would be information_schema where table oriented logs would be there
+
+cursor.execute("select count(*) as NumberOfColumns from information_schema.columns where table_name = 'customers'")
+rows = cursor.fetchall()
+for row in rows:
+    print(row)
